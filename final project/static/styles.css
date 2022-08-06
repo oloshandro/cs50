@@ -1,0 +1,37 @@
+/* categories grid */
+.grid-container {
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* background-color: #2196F3; */
+    padding: 10px;
+}
+.grid-item {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgb(56, 71, 231);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: x-large;
+    color: rgb(56, 71, 231);
+    font-style: bold;
+}
+
+nav .nav-item
+{
+    font-size: large;
+    color: rgb(76, 109, 253);
+    /* font-style: bold; */
+}
+
+nav .nav-link
+{
+    font-size: large;
+}

@@ -57,6 +57,36 @@ INSERT INTO accounts (user_id, account_id, name, type, currency, balance) VALUES
 """categories"""
 2 tabs
 
+"""expenses"""
+render template "expenses.html" via GET
+
+add new expense
+require user input-select via POST:
+        category
+        account
+        description
+        amount
+
+validate users input + check if it exists
+INSERT INTO transactions (user_id, acount_name, category, amount, description, transaction_date); 
+
+UPDATE categories to count general balance of categories
+
+
+"""income"""
+render template "income.html" via GET
+
+add new expense
+require user input-select via POST:
+        category
+        account
+        description
+        amount
+
+validate users input + check if it exists
+INSERT INTO transactions (user_id, acount_name, category, amount, description, transaction_date); 
+
+UPDATE categories to count general balance of categories
 
 """transactions"""
 UPDATE transactions table in expences + income

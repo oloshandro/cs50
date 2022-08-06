@@ -12,6 +12,9 @@ CREATE TABLE accounts (
     currency INTEGER NOT NULL,
     balance NUMERIC NOT NULL DEFAULT 0.00);
 
+ALTER TABLE accounts
+ ADD currency_symbol;
+
 3
 CREATE TABLE categories (
 	user_id INTEGER NOT NULL,
@@ -19,11 +22,10 @@ CREATE TABLE categories (
 
 4
 CREATE TABLE transactions (
-	? user_id INTEGER  NOT NULL,
-	account_id INTEGER PRIMARY KEY NOT NULL,
+	user_id INTEGER  NOT NULL,
+	account_name INTEGER NOT NULL,
     category TEXT NOT NULL,
-	type TEXT NOT NULL,
-    amount INTEGER  NOT NULL,
+    amount INTEGER NOT NULL,
     description TEXT,
     transaction_date TEXT NOT NULL);
 
