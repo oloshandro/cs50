@@ -1,0 +1,64 @@
+MyMoney: Keep track of your finance
+
+1 create tables for MyMoney.db
+
+2 app.py:
+
+---basic---
+"""register""" 
+
+render template "register.html" via GET
+
+require user input (email, username-?, password) via POST
+validate user input + check if it exists
+INSERT INTO users (username, hash) VALUES(?, ?) 
+remember which user has logged in - session[]
+flash messages https://flask.palletsprojects.com/en/2.1.x/patterns/flashing/#:~:text=Flask%20provides%20a%20really%20simple,layout%20template%20that%20does%20this.
+
+"""login"""
+
+forget any user 
+
+render template "login.html" via GET
+
+require user input (email, password) via POST
+query 'users' table to validate user input 
+remember which user has logged in - session[]
+redirect user to homepage "layout.html" '/'
+
+"""logout"""
+
+forget any user 
+redirect user to login form
+
+"""create index.html template for logged in page"""
+
+
+---main_functions---
+
+"""accounts"""
+
+render template "account.html" via GET
+
+add new account
+require user input-select via POST:
+        --type: regular - cash - card, savings;
+        currency (create a list of currencies + jinjia template): US dollar (USD), Euro (EUR) 
+        (<select name="">
+        <option value="USD" selected="selected">United States Dollars</option>)
+        ?balance:  format
+validate users input + check if it exists
+INSERT INTO accounts (user_id, account_id, name, type, currency, balance) VALUES(?, ?, ?, ?, ?, ?) 
+
+? delete
+? edit
+
+
+"""categories"""
+2 tabs
+
+
+"""transactions"""
+UPDATE transactions table in expences + income
+
+"""overview"""

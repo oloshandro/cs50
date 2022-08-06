@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MyAccounts
+{% endblock %}
+
+{% block main %}
+<!-- <main class="container py-5 text-center">
+    <table class="table table">
+      <thead>
+          <tr>
+              <th class="text-start">Account name</th>
+              <th class="text-end">Currency</th>
+              <th class="text-end">Balance</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for account in accounts %}
+              <tr>
+                <th class="text-start">{{ account[0] }} </th>
+                <td class="text-end">{{ account[1] }}</td>
+                <td class="text-end">{{ account[2] }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  <div>
+    <button class="btn btn-primary" id="create">Create a new account</button>
+ </div>
+</main> -->
+
+
+    <form action="/create_account" method="post">
+        {% if message %}
+        <div class="alert alert-primary mb-0 text-center" role="alert"> {{ message }} </div>
+        {% endif %}
+        <p></p>
+        {% if create %}
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="name" name="name" placeholder="Name" type="text">
+            </div>
+            <div class="mb-3">
+                <select name="currency">
+                    <option disabled selected value="">Currency</option>
+                    {% for currency in currencies %}
+                        <option value="{{ currency }}">{{ currency }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="balance" name="balance" placeholder="Balance" type="text">
+            <button class="btn btn-primary" type="submit">Log in</button>
+        {% endif %}
+     </form>
+{% endblock %}
