@@ -14,6 +14,7 @@
 
         <!-- https://favicon.io/emoji-favicons/money-bag/
         <link href="/static/favicon.ico" rel="icon"> -->
+        <link rel="shortcut icon" href="static/catMyMoney.png" type="image/cat-icon">
 
         <title>MyMoney: {% block title %}{% endblock %}</title>
 
@@ -22,7 +23,19 @@
     <body>
         <nav class="bg-light border navbar-light navbar navbar-expand-md">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">MyMoney</span></a>
+            
+                {% if session["user_id"] %}
+                <img src="static/catMyMoney.png" alt="" width="60" height="54" class="d-inline-block align-text-bottom">
+                <a class="navbar-brand" href="/expenses">MyMoney</span></a>
+
+                {% else %}
+                <img src="static/catMyMoney.png" alt="" width="60" height="54" class="d-inline-block align-text-bottom">
+                <a class="navbar-brand" href="/expenses">MyMoney</span></a>
+                <ul class="navbar-nav ms-auto mt-2">
+                    <li class="nav-item"><a class="nav-link">simple tool to track finance</a></li>
+                </ul>
+                {% endif %}
+                
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,12 +46,14 @@
                             <li class="nav-item"><a class="nav-link" href="/categories">MyCategories</a></li>
                             <li class="nav-item"><a class="nav-link" href="/transactions">MyTransactions</a></li>
                             <!-- <li class="nav-item"><a class="nav-link" href="/overview">MyOverview</a></li> -->
+
                         </ul>
                         <ul class="navbar-nav ms-auto mt-2"> 
                             <li class="nav-item"><a class="nav-link"> {{ session["user_id"]["email"] }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                         </ul>
                     {% else %}
+                    
                         <ul class="navbar-nav ms-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                             <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>

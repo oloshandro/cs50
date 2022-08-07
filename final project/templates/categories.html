@@ -5,32 +5,7 @@
 {% endblock %}
 
 {% block main %}
-<main class="container py-5 text-center">
-
-    <div class="grid-container">
-        {% for category in categories %}
-        <div class="grid-item">{{ category }}</div>
-        {% endfor %}
-    </div>
-
-
-    <!-- <table class="table table">
-      <thead>
-          <tr>
-              <th class="text-middle">New Category</th>
-          </tr>
-      </thead>
-      <tbody>
-          {% for category in categories %}
-              <tr>
-                <th class="text-middle">{{ category[0] }}</th>
-              </tr>
-          {% endfor %}
-      </tbody>
-  </table> -->
-  <div>
-
-    
+<div> 
     <form action="/categories" method="post">
         <p></p>
         {% if message %}
@@ -44,5 +19,12 @@
         </div>
      </form>
  </div>
+
+<main class="container py-5 text-center">
+    <div class="grid-container">
+        {% for category in categories %}
+        <div class="grid-item">{{ category }}</div>
+        {% endfor %}
+    </div>
 </main>
 {% endblock %}

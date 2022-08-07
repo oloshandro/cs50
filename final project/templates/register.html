@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block main %}
+<div class="register">
+    <img src="static/sloganMyMoney.png" class="card-img-middle" alt="sloganMyMoney">
+
     <form action="/register" method="post">
         {% if message %}
         <div class="alert alert-primary mb-0 text-center" role="alert"> {{ message }} </div>
@@ -21,4 +24,5 @@
         </div>
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
+</div>
 {% endblock %}

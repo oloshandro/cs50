@@ -25,6 +25,12 @@ nav a.navbar-brand
     font-weight: 600;
 }
 
+.register {
+    display: flex;
+    width: 55%
+}
+
+
 .navbar-light .navbar-nav .nav-link
 {
     color: rgb(56, 71, 231) !important;

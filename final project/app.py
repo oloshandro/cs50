@@ -9,6 +9,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime, date, time, timezone
+from  itertools import chain
 
 from helpers import login_required
 
@@ -52,7 +53,7 @@ def after_request(response):
 def index():
     """Show logged in main page"""
     # show currect balance + accounts, categories, transactions, overview buttons
-    return render_template("expenses.html")
+    return render_template("expenses.html",)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -89,7 +90,7 @@ def login():
         session["user_id"] = rows[0]["id"]
 
         # Redirect user to home page
-        return redirect("/")
+        return render_template("expenses.html")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -155,7 +156,8 @@ def register():
                 user_id=session["user_id"], category=cat)
 
         # ??Redirect user to home page
-        return redirect("/")
+        # return redirect("/")
+        return render_template("expenses.html")
 
     #User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -175,7 +177,7 @@ def account():
         # create a list with all the info about the stock and append it to a list of every stock owned by the user
         accounts.append(list((row['account_name'], row['currency'], row['balance'], row['currency_symbol'])))
     # render_template("account.html", accounts=accounts)
-
+    print(accounts)
 
     # creating new account via POST to /quote and validating the fields 'name', 'currency', 'balance'
     if request.method == "POST":
@@ -185,6 +187,9 @@ def account():
 
         if not account_name:
             return render_template("account.html", accounts=accounts, currencies=CURRENCIES, message="Please, create a name for your account")
+
+        if account_name in chain(*accounts): 
+            return render_template("account.html", accounts=accounts, currencies=CURRENCIES, message="You already have an account with such name. Please, create another name")
         
         if not currency or currency not in CURRENCIES:
             return render_template("account.html", accounts=accounts, currencies=CURRENCIES, message="Please, choose the currency from the field")
@@ -289,7 +294,10 @@ def expenses():
             return render_template("expenses.html", categories=categories, accounts=accounts, message="Please, add the amount money spent")
 
         if not description:
-            return render_template("expenses.html", categories=categories, accounts=accounts)
+            return render_template("expenses.html", categories=categories, accounts=accounts, message="Please, add the description")
+
+        if not category or not account_name or not amount or not description:
+            return render_template("income.html", categories=categories, accounts=accounts, message="Something went wrong. Please try again")
         
 
         # # check if there is enough money on the account
@@ -381,8 +389,11 @@ def income():
         if not amount:
             return render_template("income.html", categories=categories, accounts=accounts, message="Please, add the amount money earned")
 
-        # if not description:
-        #     return render_template("income.html", categories=categories, accounts=accounts)
+        if not description:
+            return render_template("income.html", categories=categories, accounts=accounts, message="Please, add the description")
+
+        if not category or not account_name or not amount or not description:
+            return render_template("income.html", categories=categories, accounts=accounts, message="Something went wrong. Please try again")
 
         # insert new category into the transactions table
         transaction_date = str(datetime.now())[0:10]
