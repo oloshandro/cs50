@@ -1,6 +1,6 @@
 # MyMoney: a simple tool to keep track of your finance
 
-##### Video Demo:  <URL HERE>
+##### Video Demo: https://youtu.be/vH0mGJ_l8IY
 
 ### It's a client-server web applications built using Flask, Bootstrap, SQLite. The use of JS is limited to standart Bootstrap features (none). 
 
