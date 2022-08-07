@@ -20,7 +20,7 @@
     </head>
 
     <body>
-        <nav class="bg-light border navbar navbar-expand-md">
+        <nav class="bg-light border navbar-light navbar navbar-expand-md">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">MyMoney</span></a>
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
@@ -35,6 +35,7 @@
                             <!-- <li class="nav-item"><a class="nav-link" href="/overview">MyOverview</a></li> -->
                         </ul>
                         <ul class="navbar-nav ms-auto mt-2"> 
+                            <li class="nav-item"><a class="nav-link"> {{ session["user_id"]["email"] }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                         </ul>
                     {% else %}
@@ -47,14 +48,6 @@
             </div>
         </nav>
 
-       
-        <!-- {% if get_flashed_messages() %}
-            <header>
-                <div class="alert alert-primary mb-0 text-center" role="alert">
-                    {{ get_flashed_messages() | join(" ") }}
-                </div>
-            </header>
-        {% endif %} -->
 
         <main class="container-fluid py-5 text-center">
             {% block main %}{% endblock %}

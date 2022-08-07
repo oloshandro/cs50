@@ -17,21 +17,34 @@
 }
 
 /* Size for brand */
-nav .navbar-brand
+nav a.navbar-brand
 {
     font-size: x-large;
-    color: rgb(56, 71, 231);
+    color: rgb(56, 71, 231) !important;
     font-style: bold;
+    font-weight: 600;
 }
 
-nav .nav-item
+.navbar-light .navbar-nav .nav-link
 {
-    font-size: large;
-    color: rgb(76, 109, 253);
-    /* font-style: bold; */
+    color: rgb(56, 71, 231) !important;
 }
 
-nav .nav-link
+.nav-tabs a.nav-link
 {
     font-size: large;
+    font-weight: 600;
+    color:rgba(0, 0, 0, 0.544) !important;
+}
+
+.nav-tabs a.nav-link.active
+{
+    font-size: large;
+    font-weight: 600;
+    color:blue !important;
+}
+
+ul.nav.nav-tabs
+{
+    border-bottom: 0.5px solid #b1d8ff;
 }

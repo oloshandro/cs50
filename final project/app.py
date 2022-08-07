@@ -52,7 +52,7 @@ def after_request(response):
 def index():
     """Show logged in main page"""
     # show currect balance + accounts, categories, transactions, overview buttons
-    return render_template("index.html")
+    return render_template("expenses.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
